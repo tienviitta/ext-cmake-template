@@ -1,6 +1,11 @@
 # Works with 3.14 and tested through 3.27
 cmake_minimum_required(VERSION 3.14...3.27)
 
+# Here is a list of few CMake-defined variables:
+# - PROJECT_BINARY_DIR. This is the build folder for the project.
+# - PROJECT_SOURCE_DIR. This is the location of the root CMakeLists.txt in the project.
+# - CMAKE_CURRENT_LIST_DIR. This is the folder for the CMakeLists.txt currently being processed.
+
 # Project name and a few useful settings. Other commands can pick up the results
 project(
   ModernCMakeExample
@@ -35,6 +40,11 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     message(STATUS "Doxygen not found, not building docs")
   endif()
 endif()
+
+# Compiler
+include(CMakePrintHelpers)
+cmake_print_variables(CMAKE_CXX_COMPILER_ID)
+cmake_print_variables(CMAKE_CXX_COMPILER_VERSION)
 
 # FetchContent added in CMake 3.11, downloads during the configure step
 # FetchContent_MakeAvailable was added in CMake 3.14; simpler usage
